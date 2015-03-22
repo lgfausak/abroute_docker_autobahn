@@ -1,0 +1,15 @@
+#!/bin/bash
+# set environment for all in this group
+PATH=/usr/local/abin:$PATH
+
+PG_VERSION=9.4
+
+export PG_VERSION
+
+DB_NAME=autobahn
+DB_USER=autouser
+DB_HOST=pg
+
+export DB_NAME DB_USER DB_HOST
+
+set -o vi

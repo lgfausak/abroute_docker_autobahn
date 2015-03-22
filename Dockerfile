@@ -13,13 +13,15 @@ RUN apt-get update \
                        postgresql-server-dev-${PG_VERSION} \
                        postgresql-contrib-${PG_VERSION} pwgen \
                        python-dev python-pip \
+ && pip install sqlauth \
  && rm -rf /var/lib/postgresql \
  && rm -rf /var/lib/apt/lists/* # 20150220 \
  && mkdir -p /usr/local/abin /usr/local/aetc \
- && chmod 755 /usr/local/abin \
- && pip install sqlauth
+ && chmod 755 /usr/local/abin
+
+COPY ab abenv router rpc adm /usr/local/abin/
 
 EXPOSE 8080
 
-#ENTRYPOINT ["/usr/local/abin/ab"]
-#CMD ["absql"]
+ENTRYPOINT ["/usr/local/abin/ab"]
+CMD ["router"]
