@@ -21,6 +21,7 @@ on top to control the actions we can take on the topic. The actions that can be 
 * publish - publish a message to a topic
 * subscribe - subscribe to a topic channel
 * admin - grant these actions / permissions to others
+
 A hook is needed in the autobahn router to check authentication and
 authorization. Luckily, there is already a hook for authentication. Authorization
 needs to be checked before doing each action, that is why I needed to modify the
