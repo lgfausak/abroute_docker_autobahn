@@ -1,9 +1,0 @@
-#!/bin/bash
-#
-# ab
-# this is the script that runs the other scripts :-)
-#
-cmd_name=$1
-echo ${cmd_name} > /tmp/.autobahn_active_command
-shift
-exec /usr/local/abin/${cmd_name} $@

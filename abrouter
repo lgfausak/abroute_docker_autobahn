@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# abrouter
+#  run the autobahn router
+#
+set -e
+
+. /usr/local/etc/abenv
+
+sqlauthrouter -d "${DSN}" -v

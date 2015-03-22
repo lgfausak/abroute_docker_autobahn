@@ -1,27 +1,14 @@
-FROM phusion/baseimage
+FROM tacodata/abroute-docker-base
+#
+# this runs the autobahn router for authentication and authorization
+# it expects a database to be up and running, details
+# about it are in the abenv file
+#
 
 MAINTAINER Greg Fausak <greg@tacodata.com>
 
-ENV PG_VERSION 9.4
-RUN apt-get update \
- && apt-get install -y wget \
- && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
- && echo 'deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
- && apt-get update \
- && apt-get install -y postgresql-${PG_VERSION} \
-                       postgresql-client-${PG_VERSION} \
-                       postgresql-server-dev-${PG_VERSION} \
-                       postgresql-contrib-${PG_VERSION} pwgen \
-                       python-dev python-pip \
- && pip install sqlauth \
- && rm -rf /var/lib/postgresql \
- && rm -rf /var/lib/apt/lists/* # 20150220 \
- && mkdir -p /usr/local/abin /usr/local/aetc \
- && chmod 755 /usr/local/abin
-
-COPY ab abenv router rpc adm /usr/local/abin/
+COPY abrouter /usr/local/bin/
 
 EXPOSE 8080
 
-ENTRYPOINT ["/usr/local/abin/ab"]
-CMD ["router"]
+ENTRYPOINT ["abrouter"]
