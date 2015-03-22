@@ -9,4 +9,4 @@ set -e
 
 . /usr/local/abin/abenv
 
-sqladm $@
+sqladm -w ${WEBSOCKET} $@

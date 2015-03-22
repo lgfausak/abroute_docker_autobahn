@@ -9,4 +9,4 @@ set -e
 
 . /usr/local/abin/abenv
 
-sqlauthrpc -v
+sqlauthrpc -w ${WEBSOCKET} -v
