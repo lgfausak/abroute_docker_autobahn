@@ -5,9 +5,11 @@
 #
 set -e
 
+. /usr/local/etc/abenv
+
 # wait for dependencies, abort after 60 seconds
 waitforlink 60
-if [ $? -ne 0]
+if [ $? -ne 0 ]
 then
   echo 'Link with dependencies failed' >&2
   # i don't know what happens here, maybe the compose tries it again?
@@ -16,6 +18,5 @@ fi
 
 echo 'done waiting'
 
-. /usr/local/etc/abenv
 
 sqlauthrouter -d "${DSN}" -v
