@@ -19,4 +19,5 @@ fi
 echo 'done waiting'
 
 
-sqlauthrouter -d "${DSN}" -v
+echo 'running :' sqlauthrouter -d "${DSN}" -w "ws://127.0.0.1:${AB_PORT}/ws" -v
+sqlauthrouter -d "${DSN}" -w "ws://127.0.0.1:${AB_PORT}/ws" -v
