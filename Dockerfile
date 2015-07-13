@@ -9,6 +9,6 @@ MAINTAINER Greg Fausak <greg@tacodata.com>
 
 COPY abrouter /usr/local/bin/
 
-EXPOSE 8080
+EXPOSE 18080
 
 ENTRYPOINT ["abrouter"]
